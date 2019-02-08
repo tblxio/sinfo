@@ -11,6 +11,7 @@ socketio = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
 
+# background task example
 def background_thread():
     count = 0
     data = []
