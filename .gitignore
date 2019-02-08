@@ -28,7 +28,6 @@ env*
 .env.development.local
 .env.test.local
 .env.production.local
-.flaskenv
 *.pyc
 *.pyo
 *.log

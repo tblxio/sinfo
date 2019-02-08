@@ -1,0 +1,3 @@
+Flask==1.0
+eventlet==0.24.1
+Flask_SocketIO==3.2.1
