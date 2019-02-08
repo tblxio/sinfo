@@ -1,0 +1,90 @@
+// Fonts
+$font-stack: 'Roboto Slab', serif;
+
+// Colors
+$primary-color: #272727;
+$secundary-color: #ffffff;
+$accent-color: #37c871;
+$warm-color: rgb(216, 27, 71);
+$grey-color: #a0a0a0;
+$grey-color-dark: #333333;
+$grey-color-hover: #4a4a4a;
+$box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.5);
+
+// Typography
+@mixin main-title() {
+  font-size: 8rem;
+  line-height: 10rem;
+  font-family: $font-stack;
+  font-weight: 400;
+}
+
+@mixin headline-h1() {
+  font-size: 3.2rem;
+  line-height: 3.4rem;
+  font-family: $font-stack;
+  font-weight: 700;
+}
+
+@mixin title-h2() {
+  font-size: 2.8rem;
+  line-height: 3rem;
+  font-family: $font-stack;
+  font-weight: 700;
+}
+
+@mixin title-h3() {
+  font-size: 2rem;
+  line-height: 2.2rem;
+  font-family: $font-stack;
+  font-weight: 700;
+}
+
+@mixin title-h4() {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-family: $font-stack;
+  font-weight: 700;
+}
+
+@mixin lead-text() {
+  font-size: 1.8rem;
+  line-height: 2rem;
+  font-family: $font-stack;
+  font-weight: 400;
+}
+
+@mixin body-text() {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-family: $font-stack;
+  font-weight: 400;
+}
+
+@mixin auxiliary-text() {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-family: $font-stack;
+  font-weight: 400;
+}
+
+@mixin body-link() {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-family: $font-stack;
+  font-weight: 400;
+}
+
+@mixin title-link() {
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-family: $font-stack;
+  font-weight: 700;
+}
+
+@mixin secondary-body() {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-family: $font-stack;
+  font-weight: 400;
+}

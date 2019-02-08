@@ -1,0 +1,58 @@
+/** @define Navbar */
+.Navbar {
+  align-items: center;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 72px;
+  justify-content: space-around;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &-container {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 25px;
+    justify-content: space-between;
+    max-width: 1920px;
+    width: 90%;
+  }
+
+  &-logo {
+    background-color: $accent-color;
+    height: 25px;
+    width: 175px;
+  }
+
+  &-status {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 50px;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  &-status-text {
+    color: $secundary-color;
+
+    @include body-text();
+  }
+
+  &-status-circle {
+    background-color: $accent-color;
+    border-radius: 25px;
+    height: 25px;
+    margin-left: 15px;
+    width: 25px;
+
+    &--disconnected {
+      background-color: $warm-color;
+    }
+  }
+}

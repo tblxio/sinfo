@@ -1,0 +1,35 @@
+# dependencies
+client/node_modules
+
+# coverage
+client/coverage
+.coverage
+.coverage.*
+*,cover
+
+# production
+client/dist
+client/build
+
+# virtualenv
+venv/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# misc
+env/
+env*
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.flaskenv
+*.pyc
+*.pyo
+*.log
+*.log*
