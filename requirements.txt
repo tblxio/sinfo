@@ -1,0 +1,5 @@
+Flask==1.0
+eventlet==0.24.1
+Flask_SocketIO==3.2.1
+kafka-python==1.4.4
+
