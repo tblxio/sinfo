@@ -39,17 +39,8 @@ def background_thread():
         timestamp = message[2]
 
         message_json = [
-          {
-            "x": acc[0],
-            "y": acc[1],
-            "z": acc[2]
-          },
-
-          {
-            "roll": gyro[0],
-            "pitch": gyro[1],
-            "yaw": gyro[2]
-          },
+          {"x": acc[0], "y": acc[1], "z": acc[2]},
+          {"roll": gyro[0], "pitch": gyro[1], "yaw": gyro[2]},
           timestamp
         ]
 
@@ -63,7 +54,7 @@ def test_connect():
     with thread_lock:
         if thread is None:
             thread = socketio.start_background_task(background_thread)
-    emit('response', {'data': 'Connected'})
+    emit('response', {'data': []})
 
 
 @socketio.on('disconnect')
