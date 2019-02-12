@@ -2,13 +2,16 @@ import reducer, { WATCH_DATA, ON_WATCH_DATA, watchData } from '../data-viz'
 
 const initialState = {
   connected: false,
-  data: {},
+  data: {
+    accelerometer: [],
+    gyroscope: []
+  },
   isLoading: false
 }
 
 const samplePayload = {
   connected: true,
-  data: {}
+  data: { accelerometer: [], gyroscope: [] }
 }
 
 // Test data viz output state
