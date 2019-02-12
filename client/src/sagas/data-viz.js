@@ -2,7 +2,7 @@ import { takeLatest, put, call, cancelled, take } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
 import { WATCH_DATA, ON_WATCH_DATA } from '../duxs/data-viz'
 
-import { wsConnect } from '../api/connection'
+import apiCaller from '../api/connection'
 
 export const createSocketChannel = (socket = {}) =>
   eventChannel(emit => {
@@ -12,13 +12,16 @@ export const createSocketChannel = (socket = {}) =>
   })
 
 export function* watchData() {
-  const socket = yield call(wsConnect)
+  const socket = yield call(apiCaller.wsConnect)
   const socketChannel = yield call(createSocketChannel, socket)
 
   while (true) {
     try {
       const data = yield take(socketChannel)
-      yield put({ type: ON_WATCH_DATA, payload: { data, connected: true } })
+      yield put({
+        type: ON_WATCH_DATA,
+        payload: { data, connected: socket.connected }
+      })
     } catch (err) {
       if (yield cancelled()) {
         socketChannel.disconnect()
