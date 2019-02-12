@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Python3 + Node.js + Yarn
+- Python3.6 + Node.js + Yarn
 
 ## Setup
 
