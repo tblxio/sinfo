@@ -4,6 +4,7 @@ from threading import Lock
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
 from kafka import KafkaConsumer
+import json
 
 async_mode = None
 
@@ -12,10 +13,20 @@ socketio = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
 
+with open('config_consumer.json', 'r') as f:
+    config = json.load(f)
 
-consumer = KafkaConsumer('topic',
-                         bootstrap_servers='...:....',
-                         auto_offset_reset='largest')
+consumer = KafkaConsumer(bootstrap_servers=config['KAFKA_BROKER'],
+                         sasl_plain_username=config['KAFKA_USERNAME'],
+                         sasl_plain_password=config['KAFKA_PASSWORD'],
+                         auto_offset_reset='earliest',
+                         security_protocol='SASL_SSL',
+                         sasl_mechanism='PLAIN',
+                         ssl_check_hostname=False,
+                         ssl_cafile=config["SSL_CAFILE"],
+                         ssl_certfile=config["SSL_CERTFILE"],
+                         ssl_keyfile=config["SSL_KEYFILE"])
+consumer.subscribe([config["TOPIC"]])
 
 
 def background_thread():
@@ -44,3 +55,4 @@ def test_disconnect():
 
 if __name__ == '__main__':
     wsgi.server(eventlet.listen(('localhost', 5000)), app)
+
