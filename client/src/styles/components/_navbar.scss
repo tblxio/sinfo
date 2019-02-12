@@ -24,9 +24,15 @@
   }
 
   &-logo {
-    background-color: $accent-color;
-    height: 25px;
-    width: 175px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    height: 30px;
+    width: auto;
+
+    &-svg {
+      margin-left: -90px;
+    }
   }
 
   &-status {
