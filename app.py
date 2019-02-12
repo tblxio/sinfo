@@ -19,7 +19,7 @@ with open('config_consumer.json', 'r') as f:
 consumer = KafkaConsumer(bootstrap_servers=config['KAFKA_BROKER'],
                          sasl_plain_username=config['KAFKA_USERNAME'],
                          sasl_plain_password=config['KAFKA_PASSWORD'],
-                         auto_offset_reset='earliest',
+                         auto_offset_reset='largest',
                          security_protocol='SASL_SSL',
                          sasl_mechanism='PLAIN',
                          ssl_check_hostname=False,
@@ -32,11 +32,29 @@ consumer.subscribe([config["TOPIC"]])
 def background_thread():
     for message in consumer:
         socketio.sleep(0)
-        message = message.value.decode("utf-8")
-        message = message[message.find('['):-1]
+        message = eval(message.value.decode("utf-8").replace("L", ''))
+
+        acc = list(message[0])
+        gyro = list(message[1])
+        timestamp = message[2]
+
+        message_json = [
+          {
+            "x": acc[0],
+            "y": acc[1],
+            "z": acc[2]
+          },
+
+          {
+            "roll": gyro[0],
+            "pitch": gyro[1],
+            "yaw": gyro[2]
+          },
+          timestamp
+        ]
 
         socketio.emit(
-          'response', {'data': message})
+          'response', message_json)
 
 
 @socketio.on('connect')
