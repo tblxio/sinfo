@@ -1,18 +1,37 @@
 /** @define Dataviz */
 .Dataviz {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 95%;
+
   &-wrapper {
     border-radius: 4px;
     box-shadow: $box-shadow;
     height: auto;
-    margin: 0 auto;
     margin-top: 100px;
     overflow: hidden;
     position: relative;
-    max-width: 1290px;
-    width: 80%;
+    width: 100%;
   }
 
   &-graph {
     background-color: $primary-color;
+  }
+
+  @media only screen and (min-width: 640px) {
+    width: 90%;
+  }
+
+  @media only screen and (min-width: 1920px) {
+    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: calc(100vh - 160px);
+
+    &-wrapper {
+      width: 48%;
+    }
   }
 }
