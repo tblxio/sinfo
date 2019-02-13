@@ -114,21 +114,21 @@ class DataViz extends PureComponent {
       <div className="Dataviz">
         <Navbar connected={connected} />
 
-        <div className="Dataviz-wrapper">
+        <section className="Dataviz-wrapper">
           <HighchartsReact
             highcharts={Highcharts}
             updateArgs={[true, true, true]}
             options={this.renderAccelerometerOptions(data)}
           />
-        </div>
+        </section>
 
-        <div className="Dataviz-wrapper">
+        <section className="Dataviz-wrapper">
           <HighchartsReact
             highcharts={Highcharts}
             updateArgs={[true, true, true]}
             options={this.renderGyroscopeOptions(data)}
           />
-        </div>
+        </section>
       </div>
     )
   }

@@ -4,10 +4,10 @@ const options = {
     type: 'line',
     backgroundColor: {
       linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-      stops: [[0, '#2a2a2b'], [1, '#272727']]
+      stops: [[0, '#333333'], [1, '#272727']]
     },
     style: {
-      fontFamily: "'Roboto Slab', serif"
+      fontFamily: "'Roboto', sans-serif"
     }
   },
   xAxis: {
