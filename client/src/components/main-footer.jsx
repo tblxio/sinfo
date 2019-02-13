@@ -1,4 +1,5 @@
 import React from 'react'
+
 const MainFooter = () => (
   <footer className="MainFooter">
     <div className="MainFooter-container">
