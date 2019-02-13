@@ -1,8 +1,23 @@
 /** @define Navbar */
 .Navbar {
   align-items: center;
-  background-color: $primary-color;
-  box-shadow: $box-shadow;
+  background: $primary-color;
+  background: -moz-linear-gradient(
+    bottom,
+    rgba(39, 39, 39, 0.6) 1%,
+    rgba(39, 39, 39, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(39, 39, 39, 0.6) 1%,
+    rgba(39, 39, 39, 1) 100%
+  );
+  background: linear-gradient(
+    to top,
+    rgba(39, 39, 39, 0.6) 1%,
+    rgba(39, 39, 39, 1) 100%
+  );
+  box-shadow: 0 16px 28px 0 rgba(39, 39, 39, 0.6);
   display: flex;
   flex-flow: row nowrap;
   height: 72px;
@@ -20,18 +35,18 @@
     height: 25px;
     justify-content: space-between;
     max-width: 1920px;
-    width: 90%;
+    width: 95%;
   }
 
   &-logo {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-    height: 30px;
+    height: 25px;
     width: auto;
 
     &-svg {
-      margin-left: -90px;
+      margin-left: -135px;
     }
   }
 
@@ -46,19 +61,86 @@
 
   &-status-text {
     color: $secundary-color;
+    display: none;
 
-    @include body-text();
+    @include auxiliary-text();
   }
 
   &-status-circle {
+    animation: pulse 2s infinite;
     background-color: $accent-color;
-    border-radius: 25px;
-    height: 25px;
+    box-shadow: 0 0px 10px 2px rgba(55, 200, 113, 0);
+    border-radius: 20px;
+    height: 20px;
     margin-left: 15px;
-    width: 25px;
+    width: 20px;
+
+    @-webkit-keyframes pulse {
+      0% {
+        -webkit-box-shadow: 0 0 10px 2px rgba(55, 200, 113, 0.5);
+      }
+      70% {
+        -webkit-box-shadow: 0 0 10px 10px rgba(55, 200, 113, 0);
+      }
+      100% {
+        -webkit-box-shadow: 0 0 10px 2px rgba(55, 200, 113, 0);
+      }
+    }
+    @keyframes pulse {
+      0% {
+        -moz-box-shadow: 0 0 10px 2px rgba(55, 200, 113, 0.5);
+        box-shadow: 0 0 10px 2px rgba(55, 200, 113, 0.5);
+      }
+      70% {
+        -moz-box-shadow: 0 0 10px 10px rgba(55, 200, 113, 0);
+        box-shadow: 0 0 10px 10px rgba(55, 200, 113, 0);
+      }
+      100% {
+        -moz-box-shadow: 0 0 10px 2px rgba(55, 200, 113, 0);
+        box-shadow: 0 0 10px 2px rgba(55, 200, 113, 0);
+      }
+    }
 
     &--disconnected {
+      animation: pulse 2s infinite;
       background-color: $warm-color;
+      box-shadow: 0 0px 10px 2px rgba(216, 27, 71, 0);
+
+      @-webkit-keyframes pulse {
+        0% {
+          -webkit-box-shadow: 0 0 10px 2px rgba(216, 27, 71, 0.5);
+        }
+        70% {
+          -webkit-box-shadow: 0 0 10px 10px rgba(216, 27, 71, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 10px 2px rgba(216, 27, 71, 0);
+        }
+      }
+      @keyframes pulse {
+        0% {
+          -moz-box-shadow: 0 0 10px 2px rgba(216, 27, 71, 0.5);
+          box-shadow: 0 0 10px 2px rgba(216, 27, 71, 0.5);
+        }
+        70% {
+          -moz-box-shadow: 0 0 10px 10px rgba(216, 27, 71, 0);
+          box-shadow: 0 0 10px 10px rgba(216, 27, 71, 0);
+        }
+        100% {
+          -moz-box-shadow: 0 0 10px 2px rgba(216, 27, 71, 0);
+          box-shadow: 0 0 10px 2px rgba(216, 27, 71, 0);
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 640px) {
+    &-container {
+      width: 90%;
+    }
+
+    &-status-text {
+      display: block;
     }
   }
 }

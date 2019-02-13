@@ -1,0 +1,55 @@
+/** @define MainFooter */
+.MainFooter {
+  align-items: center;
+  background: $primary-color;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  height: 200px;
+  padding-bottom: 25px;
+  width: 100%;
+
+  &-container {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: auto;
+    width: 95%;
+  }
+
+  &-link {
+    color: $accent-color;
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+
+    @include title-h2();
+    font-weight: 400;
+
+    &::after {
+      background-color: $accent-color;
+      content: '';
+      display: block;
+      height: 2px;
+      margin: 15px auto;
+      position: relative;
+      transition: all 0.2s ease-in-out;
+      width: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      &::after {
+        width: 50%;
+      }
+    }
+  }
+
+  &-copyright {
+    color: $grey-color;
+
+    @include secondary-body();
+    font-size: 1rem;
+  }
+}
