@@ -6,6 +6,13 @@ from flask_socketio import SocketIO, emit
 from kafka import KafkaConsumer
 import json
 
+import pandas as pd
+from ds.features import *
+import joblib
+from ds.utils import DummyPreProcessing, DeployModel
+
+import os
+
 async_mode = None
 
 app = Flask(__name__)
@@ -15,6 +22,11 @@ thread_lock = Lock()
 
 with open('config_consumer.json', 'r') as f:
     config = json.load(f)
+
+path_model = os.path.join(os.getcwd(),
+                          'models/harsh_acceleration_turn.model')
+
+model = joblib.load(path_model)
 
 consumer = KafkaConsumer(bootstrap_servers=config['KAFKA_BROKER'],
                          sasl_plain_username=config['KAFKA_USERNAME'],
@@ -30,6 +42,18 @@ consumer.subscribe([config["TOPIC"]])
 
 
 def background_thread():
+
+    i = 0
+    gap = 0
+    window_size = 21
+    point_gap = 10
+    harsh_acc = 0
+    harsh_turn = 0
+    signals_name = ['accel_x', 'accel_y', 'accel_z',
+                    'gyro_roll', 'gyro_pitch', 'gyro_yaw']
+
+    signals = np.zeros((window_size, len(signals_name)))
+
     for message in consumer:
         socketio.sleep(0)
         message = eval(message.value.decode("utf-8").replace("L", ''))
@@ -38,10 +62,40 @@ def background_thread():
         gyro = list(message[1])
         timestamp = message[2]
 
+        if i < window_size:
+            signals[i, 0] = acc[0]
+            signals[i, 1] = acc[1]
+            signals[i, 2] = acc[2]
+            signals[i, 3] = gyro[0]
+            signals[i, 4] = gyro[1]
+            signals[i, 5] = gyro[2]
+
+        else:
+            signals[0: window_size - 1, :] = signals[1: window_size, :]
+
+            signals[-1, 0] = acc[0]
+            signals[-1, 1] = acc[1]
+            signals[-1, 2] = acc[2]
+            signals[-1, 3] = gyro[0]
+            signals[-1, 4] = gyro[1]
+            signals[-1, 5] = gyro[2]
+
+        if gap >= point_gap and i > window_size:
+            df = pd.DataFrame(signals, columns=signals_name)
+            pred = model.predict(df)
+            harsh_acc = pred['harsh_accel']
+            harsh_turn = pred['harsh_turn']
+            gap = 0
+
+        i += 1
+        gap += 1
+
         message_json = [
           {"x": acc[0], "y": acc[1], "z": acc[2]},
           {"roll": gyro[0], "pitch": gyro[1], "yaw": gyro[2]},
-          timestamp
+          timestamp,
+          str(harsh_acc),
+          str(harsh_turn)
         ]
 
         socketio.emit(
