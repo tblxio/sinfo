@@ -24,9 +24,7 @@ class DataViz extends PureComponent {
     super(props)
 
     this.state = {
-      options: {
-        ...options
-      }
+      mobile: false
     }
 
     this.props.watchData()
@@ -69,8 +67,8 @@ class DataViz extends PureComponent {
   renderGyroscopeOptions = data => ({
     ...options,
     title: {
-      text: 'Gyroscope',
-      style: { color: '#FFF', fontSize: '14px' }
+      ...options.title,
+      text: 'Gyroscope'
     },
     chart: {
       ...options.chart,
@@ -107,12 +105,33 @@ class DataViz extends PureComponent {
     ]
   })
 
+  isMobile = () => {
+    this.setState({
+      mobile: window.matchMedia('(max-width: 640px)').matches
+    })
+  }
+
+  componentDidMount() {
+    this.isMobile()
+    window.addEventListener('resize', this.isMobile)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.isMobile)
+  }
+
   render() {
+    const { mobile } = this.state
     const { connected, data } = this.props
 
     return (
       <div className="Dataviz">
-        <Navbar connected={connected} />
+        <Navbar
+          connected={connected}
+          mobile={mobile}
+          harshAccel={data.harshAccel}
+          harshTurn={data.harshTurn}
+        />
 
         <section className="Dataviz-wrapper">
           <HighchartsReact
