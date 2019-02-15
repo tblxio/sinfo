@@ -7,7 +7,7 @@
 ## Setup
 
 - Clone the repo
-- cd into the dir/
+- `cd sinfo`
 - Open 2 terminal tabs
 
 **1.** Frontend:
