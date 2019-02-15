@@ -5,6 +5,7 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Navbar from '../components/navbar.jsx'
 import options from '../components/graph-options'
+import Signal from '../components/signal.jsx'
 import { getData, getStatus, watchData } from '../duxs/data-viz'
 
 class DataViz extends PureComponent {
@@ -66,10 +67,6 @@ class DataViz extends PureComponent {
 
   renderGyroscopeOptions = data => ({
     ...options,
-    title: {
-      ...options.title,
-      text: 'Gyroscope'
-    },
     chart: {
       ...options.chart,
       className: 'Dataviz-graph'
@@ -132,22 +129,40 @@ class DataViz extends PureComponent {
           harshAccel={data.harshAccel}
           harshTurn={data.harshTurn}
         />
+        <div className="Dataviz-center">
+          <div className="Dataviz-container">
+            <section className="Dataviz-wrapper">
+              <h2 className="Dataviz-title">Accelerometer</h2>
+              <HighchartsReact
+                highcharts={Highcharts}
+                updateArgs={[true, true, true]}
+                options={this.renderAccelerometerOptions(data)}
+              />
+            </section>
 
-        <section className="Dataviz-wrapper">
-          <HighchartsReact
-            highcharts={Highcharts}
-            updateArgs={[true, true, true]}
-            options={this.renderAccelerometerOptions(data)}
-          />
-        </section>
+            <section className="Dataviz-wrapper">
+              <h2 className="Dataviz-title">Gyroscope</h2>
+              <HighchartsReact
+                highcharts={Highcharts}
+                updateArgs={[true, true, true]}
+                options={this.renderGyroscopeOptions(data)}
+              />
+            </section>
+          </div>
 
-        <section className="Dataviz-wrapper">
-          <HighchartsReact
-            highcharts={Highcharts}
-            updateArgs={[true, true, true]}
-            options={this.renderGyroscopeOptions(data)}
+          <Signal
+            text="Harsh acceleration"
+            signal={data.harshAccel}
+            iconType="accel"
           />
-        </section>
+
+          <Signal
+            styles={{ marginTop: '200px' }}
+            text="Harsh turns"
+            signal={data.harshTurn}
+            iconType="turns"
+          />
+        </div>
       </div>
     )
   }
