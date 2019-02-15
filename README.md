@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- [Python3](https://www.python.org/downloads/release/python-368/) + [Node.js](https://nodejs.org/en/) + [Yarn](https://yarnpkg.com/en/docs/install)
+- [Python3.6](https://www.python.org/downloads/release/python-368/) + [Node.js](https://nodejs.org/en/) + [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Setup
 
@@ -13,7 +13,7 @@
 **1.** Frontend:
 
 - `cd client` to move into the client directory
-- `yarn` to install the depencies
+- `yarn` to install the dependencies
 - `yarn start` to launch the development server
 - wait for the web page to launch
 
