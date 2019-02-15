@@ -6,7 +6,8 @@ const initialState = {
     accelerometer: [],
     gyroscope: [],
     harshAccel: false,
-    harshTurn: false
+    harshTurn: false,
+    harshBumps: false
   },
   isLoading: false
 }
@@ -17,7 +18,8 @@ const samplePayload = {
     accelerometer: [],
     gyroscope: [],
     harshAccel: false,
-    harshTurn: false
+    harshTurn: false,
+    harshBumps: false
   }
 }
 

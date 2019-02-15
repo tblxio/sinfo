@@ -155,12 +155,17 @@ class DataViz extends PureComponent {
             signal={data.harshAccel}
             iconType="accel"
           />
-
           <Signal
             styles={{ marginTop: '200px' }}
             text="Harsh turns"
             signal={data.harshTurn}
             iconType="turns"
+          />
+          <Signal
+            styles={{ marginTop: '400px' }}
+            text="Harsh Bumps"
+            signal={data.harshBumps}
+            iconType="bumps"
           />
         </div>
       </div>
