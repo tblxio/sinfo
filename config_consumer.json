@@ -1,0 +1,9 @@
+{
+	"KAFKA_BROKER": "52.236.176.31",
+	"KAFKA_USERNAME": "sinfo",
+	"KAFKA_PASSWORD": "sinfo123",
+	"SSL_CAFILE": "kafka_certs/CARoot.pem",
+	"SSL_CERTFILE": "kafka_certs/certificate.pem",
+	"SSL_KEYFILE": "kafka_certs/key.pem",
+	"TOPIC": "sinfo_topic"
+}
