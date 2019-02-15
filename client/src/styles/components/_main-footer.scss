@@ -1,7 +1,6 @@
 /** @define MainFooter */
 .MainFooter {
   align-items: center;
-  background: $primary-color;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -10,12 +9,12 @@
   width: 100%;
 
   &-container {
-    align-items: center;
+    align-items: flex-end;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     height: auto;
-    width: 95%;
+    width: 90%;
   }
 
   &-link {
@@ -23,15 +22,16 @@
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 
-    @include title-h2();
-    font-weight: 400;
+    @include lead-text();
 
     &::after {
       background-color: $accent-color;
       content: '';
       display: block;
       height: 2px;
-      margin: 15px auto;
+      margin-bottom: 5px;
+      margin-left: 50%;
+      margin-top: 5px;
       position: relative;
       transition: all 0.2s ease-in-out;
       width: 0;

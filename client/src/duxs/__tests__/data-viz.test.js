@@ -4,14 +4,21 @@ const initialState = {
   connected: false,
   data: {
     accelerometer: [],
-    gyroscope: []
+    gyroscope: [],
+    harshAccel: false,
+    harshTurn: false
   },
   isLoading: false
 }
 
 const samplePayload = {
   connected: true,
-  data: { accelerometer: [], gyroscope: [] }
+  data: {
+    accelerometer: [],
+    gyroscope: [],
+    harshAccel: false,
+    harshTurn: false
+  }
 }
 
 // Test data viz output state

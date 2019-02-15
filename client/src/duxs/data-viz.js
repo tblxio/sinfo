@@ -5,7 +5,9 @@ const initialState = {
   connected: false,
   data: {
     accelerometer: [],
-    gyroscope: []
+    gyroscope: [],
+    harshAccel: false,
+    harshTurn: false
   },
   isLoading: false
 }
@@ -37,7 +39,9 @@ export default function reducer(state = initialState, action) {
             ? state.data.gyroscope.length >= 10
               ? [...state.data.gyroscope.filter((arr, i) => i !== 0), data[1]]
               : [...state.data.gyroscope, data[1]]
-            : [...state.data.gyroscope]
+            : [...state.data.gyroscope],
+          harshAccel: data[3] && parseInt(data[3]) > 0 ? true : false,
+          harshTurn: data[4] && parseInt(data[4]) > 0 ? true : false
         },
         isLoading: false
       }

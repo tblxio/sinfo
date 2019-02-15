@@ -2,10 +2,8 @@ const options = {
   chart: {
     animation: true,
     type: 'line',
-    backgroundColor: {
-      linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-      stops: [[0, '#333333'], [1, '#272727']]
-    },
+    height: '60%',
+    backgroundColor: '#272727',
     style: {
       fontFamily: "'Roboto', sans-serif"
     }
@@ -40,7 +38,7 @@ const options = {
     tickColor: '#707073',
     tickWidth: 1,
     title: {
-      text: 'Values',
+      text: '',
       style: {
         color: '#A0A0A3',
         fontSize: '12px'
@@ -48,14 +46,13 @@ const options = {
     },
     plotLines: [
       {
-        value: 0,
-        width: 1
+        value: 0
       }
     ]
   },
   title: {
-    text: 'Accelerometer',
-    style: { color: '#FFF', fontSize: '14px' }
+    text: '',
+    style: { color: '#FFF', fontSize: '14px', marginTop: '10px' }
   },
   legend: {
     itemStyle: {

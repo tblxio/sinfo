@@ -3,16 +3,25 @@ import { bool } from 'prop-types'
 
 const iconPath = process.env.PUBLIC_URL + '/media/icons/'
 
-const Navbar = ({ connected = false }) => (
+const Navbar = ({ connected = false, mobile = false }) => (
   <header className="Navbar">
     <div className="Navbar-container">
       <div className="Navbar-logo">
-        <img
-          className="Navbar-logo-svg"
-          src={`${iconPath}logo.svg`}
-          alt="TDH"
-        />
+        {mobile ? (
+          <img
+            className="Navbar-logo-png"
+            src={`${iconPath}logo-mobile.png`}
+            alt="TDH"
+          />
+        ) : (
+          <img
+            className="Navbar-logo-svg"
+            src={`${iconPath}logo.svg`}
+            alt="TDH"
+          />
+        )}
       </div>
+
       <div className="Navbar-status">
         <span className="Navbar-status-text">
           {connected ? 'Connected' : 'Disconnected'}
@@ -28,7 +37,8 @@ const Navbar = ({ connected = false }) => (
 )
 
 Navbar.propTypes = {
-  connected: bool
+  connected: bool,
+  mobile: bool
 }
 
 export default Navbar

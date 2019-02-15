@@ -10,6 +10,12 @@ const initialState = {}
 const store = createStore(rootReducer, initialState)
 
 describe('AppRoot Component', () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      value: jest.fn(() => ({ matches: true }))
+    })
+  })
+
   it('should render routes component', () => {
     const el = document.createElement('div')
     ReactDOM.render(
