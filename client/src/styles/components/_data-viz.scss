@@ -3,17 +3,33 @@
   display: flex;
   flex-flow: column nowrap;
   margin: 0 auto;
-  max-width: 1920px;
   width: 95%;
 
+  &-container {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+  }
+
   &-wrapper {
+    background-color: $primary-color;
     border-radius: 4px;
     box-shadow: $box-shadow;
     height: auto;
     margin-top: 100px;
     overflow: hidden;
+    padding-top: 15px;
     position: relative;
     width: 100%;
+  }
+
+  &-title {
+    color: $secundary-color;
+    margin-left: 25px;
+    padding-bottom: 25px;
+    text-transform: uppercase;
+
+    @include lead-text();
   }
 
   &-graph {
@@ -21,17 +37,47 @@
   }
 
   @media only screen and (min-width: 640px) {
-    width: 90%;
-  }
-
-  @media only screen and (min-width: 1920px) {
     align-items: center;
     flex-flow: row nowrap;
     justify-content: space-between;
     height: calc(100vh - 160px);
+    width: 100%;
+
+    &-center {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      height: auto;
+      width: 100%;
+    }
+
+    &-container {
+      align-items: center;
+      background-color: $primary-color;
+      border-radius: 4px;
+      box-shadow: $box-shadow;
+      box-sizing: border-box;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      padding: 55px;
+      max-width: 1920px;
+      overflow: hidden;
+      margin-left: 2.5%;
+      width: 80%;
+    }
 
     &-wrapper {
+      border-radius: 0;
+      box-shadow: none;
+      height: auto;
+      margin-top: 0;
+      padding-top: 0px;
       width: 48%;
+    }
+
+    &-title {
+      margin-left: 35px;
+      padding-bottom: 35px;
     }
   }
 }

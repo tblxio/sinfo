@@ -1,0 +1,51 @@
+/** @define Signal */
+.Signal {
+  align-items: center;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+  display: none;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: 150px;
+  max-width: 250px;
+  position: absolute;
+  right: 0;
+  width: 15%;
+
+  &-text {
+    color: $grey-color;
+    margin-bottom: 25px;
+
+    @include auxiliary-text();
+  }
+
+  &-accel {
+    margin-left: 15px;
+  }
+
+  &-icon {
+    fill: rgb(104, 104, 104);
+    height: 40px;
+    transition: all 0.2s ease-in-out;
+    width: auto;
+
+    &--active {
+      fill: rgb(255, 104, 4);
+    }
+  }
+
+  &-stroke {
+    transition: all 0.2s ease-in-out;
+    stroke: rgb(104, 104, 104);
+    stroke-width: 2;
+
+    &--active {
+      stroke: rgb(255, 104, 4);
+    }
+  }
+
+  @media only screen and (min-width: 1240px) {
+    display: flex;
+  }
+}
