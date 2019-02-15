@@ -2,7 +2,9 @@
 
 ## Requirements
 
-- Python3.6 + Node.js + Yarn
+
+- [Python3](https://www.python.org/downloads/release/python-368/) + [Node.js](https://nodejs.org/en/) + [Yarn](https://yarnpkg.com/en/docs/install)
+
 
 ## Setup
 
