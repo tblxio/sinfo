@@ -10,13 +10,14 @@
 - cd into the dir/
 - Open 2 terminal tabs
 
-1. Frontend:
+**1.** Frontend:
 
 - `cd client` to move into the client directory
 - `yarn` to install the depencies
 - `yarn start` to launch the development server
+- wait for the web page to launch
 
-2. Backend (from root):
+**2.** Backend (from root):
 
 - `python3 -m venv venv` for a virtual environment within
 - `source venv/bin/activate`
