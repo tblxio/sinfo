@@ -5,9 +5,7 @@ from flask_socketio import SocketIO, emit
 from kafka import KafkaConsumer
 import json
 import pandas as pd
-from ds.features import *
-import joblib
-from ds.utils import DummyPreProcessing, DeployModel
+from ds.model_saving import load_model
 import os
 
 # flask approach based on example:
@@ -23,9 +21,9 @@ with open('config_consumer.json', 'r') as f:
     config = json.load(f)
 
 path_model = os.path.join(os.getcwd(),
-                          'models/harsh_acceleration_turn.model')
+                          'ds/models/harsh_events.model')
 
-model = joblib.load(path_model)
+model = load_model(path_model)
 
 consumer = KafkaConsumer(bootstrap_servers=config['KAFKA_BROKER'],
                          sasl_plain_username=config['KAFKA_USERNAME'],

@@ -19,7 +19,13 @@
 
 **2.** Backend (from root):
 
-- `python3 -m venv venv` for a virtual environment within
+- `python3 -m venv venv` for a virtual environment within the directory
 - `source venv/bin/activate`
 - `pip install -r requirements.txt` to install the required packages
 - `python3 app.py` to launch the backend server
+
+**3.** Data Science (from root):
+
+- Steps 1, 2, and 3 of the Backend part should have been done previously.
+- `cd ds` to move into the data science directory
+- `jupyter notebook` to launch the notebook
