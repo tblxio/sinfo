@@ -200,7 +200,10 @@ def get_features(signals, labels, window_size,
     y = np.zeros(n_samples, dtype=np.int)
     
     w_min, w_max = get_window_lims(window_size=window_size)
-    pad = int(np.max([w_min, w_max]))
+    if label_pos == 'center':
+        pad = int(np.max([w_min, w_max]))
+    else:
+        pad = window_size
     idx = idx + pad
     
     pad_labels = np.pad(labels.copy(), pad, 'constant', 
@@ -217,9 +220,9 @@ def get_features(signals, labels, window_size,
                 signal_windows[i, :] = \
                     signal[idx[i] - w_min: idx[i] + w_max]
             else:
-                y[i] = pad_labels[idx[i] + w_max - 1]
+                y[i] = pad_labels[idx[i]]
                 signal_windows[i, :] = \
-                    signal[idx[i] - w_min - w_max: idx[i]]
+                    signal[idx[i] - window_size + 1: idx[i] + 1]
         
         # vectorized computation
         for feature_i, feature in enumerate(feature_list):
