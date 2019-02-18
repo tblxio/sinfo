@@ -5,6 +5,7 @@ from flask_socketio import SocketIO, emit
 from kafka import KafkaConsumer
 import json
 import pandas as pd
+import numpy as np
 from ds.model_saving import load_model
 import os
 
@@ -46,6 +47,7 @@ def background_thread():
     point_gap = 10
     harsh_acc = 0
     harsh_turn = 0
+    harsh_bump = 0
     signals_name = ['accel_x', 'accel_y', 'accel_z',
                     'gyro_roll', 'gyro_pitch', 'gyro_yaw']
 
@@ -75,6 +77,7 @@ def background_thread():
             pred = model.predict(df)
             harsh_acc = pred['harsh_accel']
             harsh_turn = pred['harsh_turn']
+            harsh_bump = pred['harsh_bump']
             gap = 0
 
         i += 1
@@ -85,7 +88,8 @@ def background_thread():
           {'roll': gyro[0], 'pitch': gyro[1], 'yaw': gyro[2]},
           timestamp,
           str(harsh_acc),
-          str(harsh_turn)
+          str(harsh_turn),
+          str(harsh_bump)
         ]
 
         socketio.emit(
