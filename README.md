@@ -19,6 +19,8 @@
 
 **2.** Backend (from root):
 
+- If you do not have `pip` for python already installed, install it following this [link](https://pip.pypa.io/en/stable/installing/). Then, install virtualenv as `pip3 install virtualenv`
+
 - `python3 -m venv venv` for a virtual environment within the directory
 - `source venv/bin/activate`
 - `pip install -r requirements.txt` to install the required packages
