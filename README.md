@@ -22,7 +22,7 @@
 - If you do not have `pip` for python already installed, install it following this [link](https://pip.pypa.io/en/stable/installing/). Then, install virtualenv as `pip3 install virtualenv`
 
 - `python3 -m venv venv` for a virtual environment within the directory
-- `source venv/bin/activate`
+- `source venv/bin/activate` (in windows, use the command line to move to the directory `venv\Scripts` and then type `activate`).
 - `pip install -r requirements.txt` to install the required packages
 - `python3 app.py` to launch the backend server
 
