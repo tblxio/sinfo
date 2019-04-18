@@ -31,3 +31,11 @@
 - Steps 1, 2, and 3 of the Backend part should have been done previously.
 - `cd ds` to move into the data science directory
 - `jupyter notebook` to launch the notebook
+
+### Contributing
+
+Review [the contributing guidelines](CONTRIBUTING.md) before you make your awesome contribution
+
+### License
+
+This project is licensed under the terms of the MIT license. See [LICENSE](LICENSE) 

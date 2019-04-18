@@ -31,3 +31,6 @@ env/
 *.pyo
 *.log
 *.log*
+
+# Jupyter notebooks
+.ipynb_checkpoints/
